@@ -13,6 +13,11 @@ export default function renderChart(props) {
       var option = JSON.parse(e.data);
       myChart.setOption(option);
     });
+    // 提示框点击事件
+    function tooltipClick(data){
+      window.ReactNativeWebView.postMessage(data);
+    }
+    window.tooltipClick = tooltipClick;
     myChart.on('click', function(params) {
       var seen = [];
       var paramsString = JSON.stringify(params, function(key, val) {
